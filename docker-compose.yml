@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_REPO=${GITHUB_REPO}
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+      - DEMO_MODE=${DEMO_MODE:-true}
+      - DATABASE_URL=postgresql://codesentinel:codesentinel@postgres:5432/codesentinel
+    volumes:
+      - ./backend:/app
+      - chroma_data:/app/data/chroma
+      - ./demo_data:/app/demo_data
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - codesentinel
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - codesentinel
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=codesentinel
+      - POSTGRES_PASSWORD=codesentinel
+      - POSTGRES_DB=codesentinel
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - codesentinel
+
+volumes:
+  chroma_data:
+  postgres_data:
+
+networks:
+  codesentinel:
+    driver: bridge
+
+# Made with Bob
