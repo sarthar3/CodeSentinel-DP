@@ -17,7 +17,7 @@ datasets==2.14.0
 
 # Transformer Models (DialoGPT + BERT)
 torch>=2.11.0
-transformers>=5.7.0
+transformers>=4.35.0
 wikipedia-api>=0.14.1
 
 # Document processing

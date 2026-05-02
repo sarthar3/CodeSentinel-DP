@@ -1,4 +1,4 @@
-# Fixes Applied to CodeSentinel
+﻿# Fixes Applied to CodeSentinel
 
 ## Issues Fixed
 
@@ -9,12 +9,12 @@
 - Sources not displayed in a separate dropdown
 
 **Fixes Applied:**
-- ✅ Updated `backend/rag/query.py` to handle general questions with fallback
-- ✅ Added `_answer_general_question()` method for non-RAG queries
-- ✅ Modified `query()` method to check relevance scores (>0.3) before using RAG
-- ✅ Fixed frontend API URL from `/api/rag/query/stream` to `http://localhost:8000/api/rag/query/stream`
-- ✅ Improved sources display with better styling and separate dropdown
-- ✅ Added visual indicators (📚, 📄) and relevance percentage badges
+- âœ… Updated `backend/rag/query.py` to handle general questions with fallback
+- âœ… Added `_answer_general_question()` method for non-RAG queries
+- âœ… Modified `query()` method to check relevance scores (>0.3) before using RAG
+- âœ… Fixed frontend API URL from `/api/rag/query/stream` to `http://localhost:8000/api/rag/query/stream`
+- âœ… Improved sources display with better styling and separate dropdown
+- âœ… Added visual indicators (ðŸ“š, ðŸ“„) and relevance percentage badges
 
 **How It Works Now:**
 1. When you ask a question, it first searches the RAG knowledge base
@@ -60,10 +60,10 @@ When you click "Analyze & Generate" in Code Porter, QA Agent, or Triage, check t
 **Changes Made:**
 - Sources now appear in a styled dropdown below each answer
 - Each source shows:
-  - 📄 Icon and filename with page number
+  - ðŸ“„ Icon and filename with page number
   - Green badge showing relevance percentage
   - Excerpt from the document
-- Click "📚 Sources Used (X)" to expand/collapse
+- Click "ðŸ“š Sources Used (X)" to expand/collapse
 
 ## Testing Instructions
 
@@ -103,10 +103,10 @@ If these still show 500 errors, check:
 
 ## Next Steps
 
-1. ✅ RAG Chat now handles both RAG and general questions
-2. ✅ Sources displayed in separate dropdown
-3. ⚠️ Other features need Groq API key verification
-4. ⚠️ May need to complete some backend method implementations
+1. âœ… RAG Chat now handles both RAG and general questions
+2. âœ… Sources displayed in separate dropdown
+3. âš ï¸ Other features need Groq API key verification
+4. âš ï¸ May need to complete some backend method implementations
 
 ## Quick Fix Commands
 

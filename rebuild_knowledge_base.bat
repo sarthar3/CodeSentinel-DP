@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo  CodeSentinel Knowledge Base Rebuild
+echo  CodeSentinel DP Knowledge Base Rebuild
 echo ========================================
 echo.
 echo This will:

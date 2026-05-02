@@ -5,7 +5,6 @@ import {
   TestTube,
   AlertTriangle,
   Activity,
-  Shield,
   Database,
   Eraser,
   BrainCircuit,
@@ -15,10 +14,11 @@ import {
   MessageCircle,
   BookOpen
 } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 const stages = [
   // Core Features
-  { path: '/rag', icon: MessageSquare, label: '🤖 RAG ChatBot', section: 'core' },
+  { path: '/rag', icon: MessageSquare, label: 'RAG ChatBot', section: 'core' },
   { path: '/explainer', icon: BookOpen, label: 'Code Explainer', section: 'core' },
   { path: '/qa', icon: TestTube, label: 'QA Agent', section: 'core' },
   { path: '/triage', icon: AlertTriangle, label: 'Triage', section: 'core' },
@@ -40,12 +40,11 @@ export default function Layout() {
     <div className="flex h-screen bg-beige-100 text-black">
       {/* Sidebar */}
       <aside className="w-64 bg-beige-200 border-r border-beige-300 flex flex-col">
-        {/* Logo */}
         <div className="p-6 border-b border-beige-300">
           <div className="flex items-center gap-3">
-            <Shield className="w-8 h-8 text-green-500" />
+            <img src={logo} alt="CodeSentinel Logo" className="w-12 h-12 object-contain mix-blend-multiply" />
             <div>
-              <h1 className="text-xl font-bold">CodeSentinel</h1>
+              <h1 className="text-xl font-bold leading-tight">CodeSentinel</h1>
               <p className="text-xs text-black">Developer Platform</p>
             </div>
           </div>

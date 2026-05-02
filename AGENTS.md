@@ -1,9 +1,9 @@
-# AGENTS.md
+﻿# AGENTS.md
 
 This file provides guidance to agents when working with code in this repository.
 
 ## Project: CodeSentinel
-AI-powered developer and data lifecycle platform solving 9 enterprise problems in one continuous workflow.
+Developer Platform solving 9 enterprise problems in one continuous workflow.
 
 ## Stack
 - Backend: Python 3.11 + FastAPI, Groq API (llama-3-70b, CodeLlama-34b)

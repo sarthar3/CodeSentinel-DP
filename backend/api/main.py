@@ -41,6 +41,16 @@ async def cleanup_history_task():
 
 @app.on_event("startup")
 async def startup_event():
+    # Clear old chats on server restart as per user request
+    try:
+        db = SessionLocal()
+        db.query(ChatHistory).delete()
+        db.commit()
+        db.close()
+        print("🚀 CodeSentinel: Chat history cleared on startup.")
+    except Exception as e:
+        print(f"⚠️ Error clearing history on startup: {e}")
+    
     asyncio.create_task(cleanup_history_task())
 
 # Configure CORS
@@ -56,10 +66,10 @@ app.add_middleware(
 async def root():
     """Root endpoint"""
     return {
-        "message": "CodeSentinel API",
-        "version": "2.0.0",
+        "message": "CodeSentinel DP API",
+        "version": "2.1.0",
         "core_features": {
-            "rag": "🤖 RAG ChatBot (Voice + Transformers)",
+            "rag": "RAG ChatBot (Voice + Transformers)",
             "explainer": "Code Explainer for Stakeholders",
             "qa": "Autonomous QA Agent",
             "triage": "Automated Issue Triage",

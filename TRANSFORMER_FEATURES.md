@@ -1,12 +1,12 @@
-# 🧠 Transformer AI Features - CodeSentinel DP
+﻿# ðŸ§  Transformer AI Features - CodeSentinel DP
 
 ## Overview
 
 CodeSentinel DP now includes **dual AI engines** for the RAG ChatBot, giving you the flexibility to choose between cloud-based speed (Groq) or local deep learning (Transformers).
 
-## 🚀 Dual AI Modes
+## ðŸš€ Dual AI Modes
 
-### Mode 1: Groq (Default) - Lightning Fast ⚡
+### Mode 1: Groq (Default) - Lightning Fast âš¡
 - **Model**: Llama 3.3 70B Versatile
 - **Speed**: ~1-2 seconds response time
 - **Quality**: Excellent for general queries and RAG
@@ -19,7 +19,7 @@ CodeSentinel DP now includes **dual AI engines** for the RAG ChatBot, giving you
 - High-volume queries
 - When internet is available
 
-### Mode 2: Transformers - Deep Learning 🧠
+### Mode 2: Transformers - Deep Learning ðŸ§ 
 - **Models**: 
   - **DialoGPT-medium** (Microsoft) - Conversational generation
   - **BERT** (all-mpnet-base-v2) - Semantic embeddings
@@ -34,23 +34,23 @@ CodeSentinel DP now includes **dual AI engines** for the RAG ChatBot, giving you
 - Conversational AI with context memory
 - Learning and experimentation
 
-## 📊 Feature Comparison
+## ðŸ“Š Feature Comparison
 
 | Feature | Groq Mode | Transformer Mode |
 |---------|-----------|------------------|
-| Response Speed | ⚡⚡⚡⚡⚡ | ⚡⚡⚡ |
-| Conversational Memory | ❌ | ✅ |
-| Offline Support | ❌ | ✅ |
-| GPU Acceleration | N/A | ✅ |
+| Response Speed | âš¡âš¡âš¡âš¡âš¡ | âš¡âš¡âš¡ |
+| Conversational Memory | âŒ | âœ… |
+| Offline Support | âŒ | âœ… |
+| GPU Acceleration | N/A | âœ… |
 | Context Window | 8K tokens | 1K tokens |
 | Semantic Search | Good | Excellent |
 | Setup Complexity | Easy | Moderate |
 
-## 🎯 Enhanced RAG Features
+## ðŸŽ¯ Enhanced RAG Features
 
 ### 1. Better Embeddings
 Upgraded from `all-MiniLM-L6-v2` to `all-mpnet-base-v2`:
-- **384 dimensions** → **768 dimensions**
+- **384 dimensions** â†’ **768 dimensions**
 - Better semantic understanding
 - Improved relevance scoring
 - More accurate document retrieval
@@ -79,7 +79,7 @@ DialoGPT maintains conversation history:
 - Natural conversation flow
 - Reset with `/api/rag/reset-conversation`
 
-## 🛠️ Installation
+## ðŸ› ï¸ Installation
 
 ### Quick Install (Included in requirements.txt)
 ```bash
@@ -111,14 +111,14 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-## 📖 Usage
+## ðŸ“– Usage
 
 ### Frontend Toggle
 1. Open RAG ChatBot
 2. Look for the model toggle button in the header
 3. Click to switch between:
-   - 🚀 **Groq** (default)
-   - 🧠 **Transformer**
+   - ðŸš€ **Groq** (default)
+   - ðŸ§  **Transformer**
 4. Current model shown in badge
 
 ### API Usage
@@ -169,7 +169,7 @@ GET /api/rag/health
 }
 ```
 
-## 🔧 Configuration
+## ðŸ”§ Configuration
 
 ### Environment Variables
 ```bash
@@ -196,7 +196,7 @@ self.embedding_model = SentenceTransformer(
 )
 ```
 
-## 🎓 Technical Details
+## ðŸŽ“ Technical Details
 
 ### DialoGPT Architecture
 - **Base**: GPT-2 architecture
@@ -213,21 +213,21 @@ self.embedding_model = SentenceTransformer(
 ### RAG Pipeline
 ```
 User Query
-    ↓
+    â†“
 BERT Embedding (768-dim vector)
-    ↓
+    â†“
 ChromaDB Similarity Search
-    ↓
+    â†“
 Top-K Documents (relevance > 0.5)
-    ↓
+    â†“
 Context Building
-    ↓
+    â†“
 DialoGPT Generation (with context)
-    ↓
+    â†“
 Response with Citations
 ```
 
-## 📈 Performance Tips
+## ðŸ“ˆ Performance Tips
 
 ### CPU Optimization
 ```python
@@ -264,7 +264,7 @@ torch.cuda.empty_cache()
 top_k=2 instead of 3
 ```
 
-## 🐛 Troubleshooting
+## ðŸ› Troubleshooting
 
 ### Issue: "Transformer engine not available"
 **Solution**: Install dependencies
@@ -295,7 +295,7 @@ pip install torch transformers wikipedia-api sentence-transformers --upgrade
 time.sleep(1)
 ```
 
-## 🔮 Future Enhancements
+## ðŸ”® Future Enhancements
 
 - [ ] Fine-tune DialoGPT on code-specific conversations
 - [ ] Add GPT-4 integration option
@@ -306,7 +306,7 @@ time.sleep(1)
 - [ ] RAG with multiple vector stores
 - [ ] Hybrid search (keyword + semantic)
 
-## 📚 References
+## ðŸ“š References
 
 - [DialoGPT Paper](https://arxiv.org/abs/1911.00536)
 - [BERT Paper](https://arxiv.org/abs/1810.04805)
@@ -314,7 +314,7 @@ time.sleep(1)
 - [Hugging Face Transformers](https://huggingface.co/docs/transformers)
 - [PyTorch Documentation](https://pytorch.org/docs/)
 
-## 🤝 Contributing
+## ðŸ¤ Contributing
 
 To add new transformer models:
 1. Update `backend/rag/transformer_engine.py`
@@ -325,4 +325,4 @@ To add new transformer models:
 
 ---
 
-**Made with ❤️ by CodeSentinel DP Team**
+**Made with â¤ï¸ by CodeSentinel DP Team**

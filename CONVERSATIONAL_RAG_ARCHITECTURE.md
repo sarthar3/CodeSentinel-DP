@@ -1,4 +1,4 @@
-# Conversational RAG Architecture
+﻿# Conversational RAG Architecture
 
 ## Overview
 Complete reconstruction of the CodeSentinel chatbot using transformers, RAG, torch, DialoGPT, and Wikipedia.
@@ -272,6 +272,6 @@ curl http://localhost:8000/api/rag/health
 
 ---
 
-**Built with Bob** 🤖
+**Built with Bob** ðŸ¤–
 **Architecture**: Transformers + RAG + Wikipedia
-**Status**: Production Ready ✅
+**Status**: Production Ready âœ…

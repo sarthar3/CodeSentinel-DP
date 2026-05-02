@@ -4,11 +4,11 @@
 
 ## 🎯 Overview
 
-CodeSentinel is a unified AI-powered platform that solves 13 real enterprise problems in one continuous workflow. It demonstrates how AI can autonomously handle the entire recovery and modernization lifecycle of a legacy codebase and its data, with advanced features for voice interaction, automated documentation, incident debugging, code review coaching, and stakeholder communication.
+CodeSentinel DP is a unified AI-powered platform that solves 13 real enterprise problems in one continuous workflow. It demonstrates how AI can autonomously handle the entire recovery and modernization lifecycle of a legacy codebase and its data, with advanced features for voice interaction, automated documentation, incident debugging, code review coaching, and stakeholder communication.
 
 ## 🚀 Core Features
 
-### 1. 🤖 RAG ChatBot (Voice-Enabled + Transformer AI)
+### 1. RAG ChatBot (Voice-Enabled + Transformer AI)
 Voice-enabled AI assistant with **dual AI engines** - choose between Groq (fast) or DialoGPT transformers (deep learning). Features:
 - **Dual AI Modes**:
   - 🚀 **Groq Mode**: Lightning-fast responses with Llama 3.3 70B (default)
@@ -63,7 +63,7 @@ Analyze and normalize SQL database schemas with AI-powered normalization recomme
 **AI Engine:** Frontend-only logic | **Analysis:** SQL parsing + normalization rules
 
 ### 9. Repo V-Assist (Voice-Driven Repository Assistant)
-Speak your questions and get instant voice responses about your codebase. Perfect for hands-free code review and rapid onboarding.
+Speak your questions and get instant voice responses about your codebase. Perfect for hands-free code exploration and rapid onboarding.
 
 **AI Engine:** Groq API (Llama 3.3 70B) | **Voice:** Web Speech API (Browser-based)
 
@@ -116,7 +116,7 @@ Code Porter → CI/CD Healer → Model Suggester → Doc & Test Pipeline
 - **Data Science**: Pandas, Scikit-Learn, Joblib
 - **Vector DB**: ChromaDB (local)
 - **RAG**: LangChain + Sentence Transformers (all-mpnet-base-v2)
-- **Deep Learning**: PyTorch 2.11+, Transformers 5.7+
+- **Deep Learning**: PyTorch 2.11+, Transformers 4.35+
 - **Knowledge**: Wikipedia API integration
 - **Frontend**: React 18 + Vite, TailwindCSS, Monaco Editor, Lucide Icons
 - **Database**: SQLite (local)
@@ -126,7 +126,7 @@ Code Porter → CI/CD Healer → Model Suggester → Doc & Test Pipeline
 ### Prerequisites
 - Python 3.11+
 - Node.js 18+
-- Docker (Optional)
+- Git installed
 
 ### Setup
 
@@ -159,7 +159,7 @@ pip install -r requirements.txt
 
 # Frontend
 cd ../frontend
-npm install --legacy-peer-deps
+npm install --legacy-peer-deps --force
 ```
 
 ## 🚀 Running the Application
@@ -178,26 +178,8 @@ npm run dev
 ```
 Available at http://localhost:5173
 
-## 🏆 Project Features
+## 🏆 Project Highlights
 
-### Core Capabilities (9 Features)
-- **RAG ChatBot**: Dual AI engines (Groq + Transformers) with voice support
-- **Code Explainer**: Translate technical code for non-technical stakeholders
-- **QA Agent**: Auto-generate unit tests and coverage reports
-- **Triage**: Automated issue analysis with severity assignment
-- **Incident Debugger**: Root cause analysis with execution flow tracing
-- **Review Coach**: Sentiment-aware code review feedback
-- **Dataset Cleaner**: ML-ready data preprocessing
-- **DB Optimizer**: SQL schema normalization recommendations
-- **Repo V-Assist**: Voice-driven repository assistant
-
-### Advanced Capabilities (4 Features)
-- **Code Porter**: Legacy monolith to microservices migration
-- **CI/CD Healer**: Self-healing pipeline with auto-patch generation
-- **Model Suggester**: AI-powered ML algorithm recommendations
-- **Doc & Test Pipeline**: Auto-generate docs and tests on code changes
-
-### Technical Features
 - **13-Feature Platform**: Complete developer lifecycle from documentation to deployment
 - **RAG-Powered**: Hallucination-free responses with source citations
 - **Multi-Language**: Supports Python, JavaScript, TypeScript, Java, Go, and more
@@ -209,5 +191,5 @@ Available at http://localhost:5173
 - **Streaming Responses**: Real-time AI output for better UX
 - **Extensible Architecture**: Easy to add new features and integrations
 
-## 📝 License
+## 📄 License
 MIT License

@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo Starting CodeSentinel Frontend Server
+echo Starting CodeSentinel DP Frontend Server
 echo ========================================
 echo.
 

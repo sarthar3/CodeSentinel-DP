@@ -132,7 +132,8 @@ export default function ChatRAG() {
     const userMessage = {
       id: Date.now(),
       type: 'user',
-      content: userQuery
+      content: userQuery,
+      timestamp: new Date().toISOString()
     }
     setMessages(prev => [...prev, userMessage])
 
@@ -142,7 +143,8 @@ export default function ChatRAG() {
       type: 'assistant',
       content: '',
       sources: [],
-      status: 'loading'
+      status: 'loading',
+      timestamp: new Date().toISOString()
     }
     setMessages(prev => [...prev, assistantMessage])
 
@@ -247,13 +249,15 @@ export default function ChatRAG() {
           historyMessages.push({
             id: `user-${item.id}`,
             type: 'user',
-            content: item.query
+            content: item.query,
+            timestamp: item.created_at
           });
           historyMessages.push({
             id: `assistant-${item.id}`,
             type: 'assistant',
             content: item.answer,
-            status: 'complete'
+            status: 'complete',
+            timestamp: item.created_at
           });
         });
         setMessages(historyMessages);
@@ -291,7 +295,8 @@ export default function ChatRAG() {
     const userMessage = {
       id: Date.now(),
       type: 'user',
-      content: userQuery
+      content: userQuery,
+      timestamp: new Date().toISOString()
     }
     setMessages(prev => [...prev, userMessage])
 
@@ -301,7 +306,8 @@ export default function ChatRAG() {
       type: 'assistant',
       content: '',
       sources: [],
-      status: 'loading'
+      status: 'loading',
+      timestamp: new Date().toISOString()
     }
     setMessages(prev => [...prev, assistantMessage])
 
@@ -418,7 +424,7 @@ export default function ChatRAG() {
       <div className="bg-beige-200 border-b border-beige-300 p-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold mb-2">🤖 RAG ChatBot</h1>
+            <h1 className="text-2xl font-bold mb-2">RAG ChatBot</h1>
             <p className="text-black">
               Voice-enabled AI assistant with RAG knowledge base and general Q&A
             </p>
@@ -480,16 +486,18 @@ export default function ChatRAG() {
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-3xl rounded-lg p-4 ${
+              className={`max-w-3xl rounded-lg p-4 relative ${
                 message.type === 'user'
                   ? 'bg-green-600 text-white'
                   : 'bg-beige-200 border border-beige-300'
               }`}
             >
               {message.type === 'user' ? (
-                <p className="whitespace-pre-wrap">{message.content}</p>
+                <div className="pr-12">
+                  <p className="whitespace-pre-wrap">{message.content}</p>
+                </div>
               ) : (
-                <>
+                <div className="pr-12">
                   {message.status === 'loading' && (
                     <div className="flex items-center gap-2 text-black">
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -502,7 +510,18 @@ export default function ChatRAG() {
                       <p className="whitespace-pre-wrap text-gray-900">{message.content}</p>
                     </div>
                   )}
-                </>
+                </div>
+              )}
+
+              {/* Timestamp */}
+              {message.timestamp && (
+                <div 
+                  className={`absolute bottom-2 right-2 text-[10px] opacity-70 ${
+                    message.type === 'user' ? 'text-white' : 'text-gray-500'
+                  }`}
+                >
+                  {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </div>
               )}
             </div>
           </div>

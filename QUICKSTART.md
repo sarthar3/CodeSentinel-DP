@@ -1,4 +1,4 @@
-# CodeSentinel - Quick Start Guide
+# CodeSentinel DP - Quick Start Guide
 
 ## Prerequisites
 
@@ -70,4 +70,4 @@ The frontend will start at: **http://localhost:5173**
 - **CORS Errors**: The backend is configured to allow all origins by default in development mode.
 
 ---
-**CodeSentinel — Integrated AI Developer Lifecycle Platform**
+**CodeSentinel DP — Integrated AI Developer Lifecycle Platform**

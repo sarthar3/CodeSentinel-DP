@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo CodeSentinel Installation Script
+echo CodeSentinel DP Installation Script
 echo ========================================
 echo.
 
