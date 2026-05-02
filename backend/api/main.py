@@ -47,9 +47,9 @@ async def startup_event():
         db.query(ChatHistory).delete()
         db.commit()
         db.close()
-        print("🚀 CodeSentinel: Chat history cleared on startup.")
+        print("[CodeSentinel] Chat history cleared on startup.")
     except Exception as e:
-        print(f"⚠️ Error clearing history on startup: {e}")
+        print(f"[CodeSentinel] Error clearing history on startup: {e}")
     
     asyncio.create_task(cleanup_history_task())
 

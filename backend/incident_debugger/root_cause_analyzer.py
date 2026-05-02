@@ -4,6 +4,7 @@ Traces execution flow and identifies root causes of incidents
 """
 import os
 import re
+import json
 from typing import Dict, Any, List, Optional
 from groq import Groq
 from datetime import datetime
@@ -14,6 +15,31 @@ class RootCauseAnalyzer:
     def __init__(self):
         self.groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     
+    def _parse_json(self, text: str) -> Any:
+        """Extract and parse JSON from AI response"""
+        try:
+            # Try parsing directly first
+            return json.loads(text)
+        except json.JSONDecodeError:
+            # Try extracting from markdown blocks
+            json_match = re.search(r'```(?:json)?\s*([\s\S]*?)\s*```', text)
+            if json_match:
+                try:
+                    return json.loads(json_match.group(1))
+                except json.JSONDecodeError:
+                    pass
+            
+            # Try finding the first { and last }
+            start = text.find('{')
+            end = text.rfind('}')
+            if start != -1 and end != -1:
+                try:
+                    return json.loads(text[start:end+1])
+                except json.JSONDecodeError:
+                    pass
+            
+            raise
+
     async def analyze_error_logs(self, error_logs: str) -> Dict[str, Any]:
         """
         Analyze error logs to identify patterns and root causes
@@ -46,7 +72,7 @@ Provide:
 5. Recommended immediate actions
 6. Long-term fixes
 
-Respond in JSON format:
+Respond ONLY in JSON format:
 {{
     "root_cause": "description",
     "contributing_factors": ["factor1", "factor2"],
@@ -60,12 +86,13 @@ Respond in JSON format:
             response = self.groq_client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.3,
-                max_tokens=1000
+                temperature=0.1,
+                max_tokens=1000,
+                timeout=30
             )
             
-            import json
-            analysis = json.loads(response.choices[0].message.content)
+            content = response.choices[0].message.content
+            analysis = self._parse_json(content)
             
             # Add extracted metadata
             analysis["metadata"] = {
@@ -234,12 +261,12 @@ Format as JSON array:
             response = self.groq_client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.4,
+                temperature=0.1,
                 max_tokens=1200
             )
             
-            import json
-            fixes = json.loads(response.choices[0].message.content)
+            content = response.choices[0].message.content
+            fixes = self._parse_json(content)
             return fixes
             
         except Exception as e:
@@ -294,12 +321,12 @@ Only include incidents with similarity > 0.5"""
             response = self.groq_client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.2,
+                temperature=0.1,
                 max_tokens=800
             )
             
-            import json
-            similar = json.loads(response.choices[0].message.content)
+            content = response.choices[0].message.content
+            similar = self._parse_json(content)
             
             # Enrich with full incident data
             enriched = []
