@@ -66,6 +66,27 @@ class SecretScanner:
         
         return entropy
     
+    def scan_text(self, text: str) -> Tuple[bool, List[Dict]]:
+        """
+        Scan a block of text for secrets
+        
+        Args:
+            text: Text to scan
+            
+        Returns:
+            Tuple of (is_safe, list_of_findings)
+        """
+        if not text:
+            return True, []
+            
+        findings = []
+        lines = text.split('\n')
+        for i, line in enumerate(lines, start=1):
+            line_matches = self.scan_line(line, i)
+            findings.extend(line_matches)
+            
+        return len(findings) == 0, findings
+
     def scan_line(self, line: str, line_number: int) -> List[Dict]:
         """
         Scan a single line for secrets

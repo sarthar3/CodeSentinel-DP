@@ -107,7 +107,8 @@ app.include_router(doc_test_router, prefix="/api/doc-test", tags=["Documentation
 app.include_router(incident_router, prefix="/api/incident", tags=["Incident Debugger"])
 app.include_router(review_router, prefix="/api/review", tags=["Review Coach"])
 app.include_router(explainer_router, prefix="/api/explainer", tags=["Code Explainer"])
-# app.include_router(cicd_router, prefix="/api/cicd", tags=["CI/CD Healer"])
+from .cicd_router import router as cicd_router
+app.include_router(cicd_router, prefix="/api/cicd", tags=["CI/CD Healer"])
 
 if __name__ == "__main__":
     import uvicorn

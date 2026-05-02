@@ -171,15 +171,82 @@ export default function ModelSuggester() {
             )}
 
             {result && result.recommendation && (
-              <div className="card h-fit sticky top-0 animate-in slide-in-from-right duration-500">
-                <div className="card-header bg-green-50">
-                  <div className="flex items-center gap-2">
-                    <Sparkles size={16} className="text-green-600" />
-                    <span>AI RECOMMENDATION</span>
+              <div className="space-y-6">
+                {/* Metrics Summary */}
+                {result.metrics && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="card bg-green-50 border-green-200">
+                      <div className="p-6">
+                        <span className="text-xs font-bold text-green-700 uppercase block mb-1">Estimated Accuracy</span>
+                        <div className="flex items-end gap-2">
+                          <span className="text-4xl font-black text-green-900">{(result.metrics.accuracy * 100).toFixed(1)}%</span>
+                          <span className="text-sm text-green-700/60 mb-1">Target</span>
+                        </div>
+                        <div className="mt-4 h-2 w-full bg-green-200 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-green-600 rounded-full transition-all duration-1000" 
+                            style={{ width: `${result.metrics.accuracy * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="card bg-beige-200">
+                      <div className="p-4">
+                        <span className="text-xs font-bold text-black/40 uppercase block mb-3">Confusion Matrix (Estim.)</span>
+                        <div className="grid grid-cols-3 gap-2 text-center">
+                          <div className="bg-beige-300 rounded p-2 flex flex-col">
+                            <span className="text-xs text-black/40">TP</span>
+                            <span className="font-bold">{result.metrics.confusion_matrix.values?.[0]?.[0] || 0}</span>
+                          </div>
+                          <div className="bg-red-100 rounded p-2 flex flex-col">
+                            <span className="text-xs text-red-400">FP</span>
+                            <span className="font-bold">{result.metrics.confusion_matrix.values?.[0]?.[1] || 0}</span>
+                          </div>
+                          <div className="bg-red-100 rounded p-2 flex flex-col">
+                            <span className="text-xs text-red-400">FN</span>
+                            <span className="font-bold">{result.metrics.confusion_matrix.values?.[1]?.[0] || 0}</span>
+                          </div>
+                          <div className="bg-beige-300 rounded p-2 flex flex-col col-start-2">
+                            <span className="text-xs text-black/40">TN</span>
+                            <span className="font-bold">{result.metrics.confusion_matrix.values?.[1]?.[1] || 0}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="p-8 prose prose-sm max-w-none text-black/80">
-                  <ReactMarkdown>{result.recommendation}</ReactMarkdown>
+                )}
+
+                {/* Alternatives */}
+                {result.metrics && result.metrics.alternatives && (
+                   <div className="card">
+                     <div className="card-header border-b">
+                       <span>ALTERNATIVE MODEL COMPARISON</span>
+                     </div>
+                     <div className="p-4 space-y-3">
+                        {result.metrics.alternatives.map((alt, idx) => (
+                          <div key={idx} className="flex items-center justify-between p-3 bg-beige-100 rounded-xl">
+                            <div className="flex flex-col">
+                              <span className="font-bold text-sm">{alt.name}</span>
+                              <span className="text-[10px] text-black/40 uppercase">Benchmark</span>
+                            </div>
+                            <span className="text-sm font-mono bg-beige-300 px-2 py-1 rounded">{(alt.accuracy * 100).toFixed(0)}%</span>
+                          </div>
+                        ))}
+                     </div>
+                   </div>
+                )}
+
+                <div className="card h-fit animate-in slide-in-from-right duration-500">
+                  <div className="card-header bg-green-50">
+                    <div className="flex items-center gap-2">
+                      <Sparkles size={16} className="text-green-600" />
+                      <span>AI ARCHITECTURAL RATIONALE</span>
+                    </div>
+                  </div>
+                  <div className="p-8 prose prose-sm max-w-none text-black/80">
+                    <ReactMarkdown>{result.recommendation}</ReactMarkdown>
+                  </div>
                 </div>
               </div>
             )}
