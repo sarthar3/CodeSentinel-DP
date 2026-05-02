@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f3ede5; /* beige-200 */
+  color: black;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Custom scrollbar for beige/green theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8dfd3; /* beige-300 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #16a34a; /* green-600 */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #15803d; /* green-700 */
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer components {
+  .card {
+    @apply bg-beige-200 border border-beige-300 rounded-lg overflow-hidden shadow-sm flex flex-col;
+  }
+  .card-header {
+    @apply p-6 flex justify-between items-center border-b border-beige-300 text-xs font-bold text-black/40 uppercase tracking-widest;
+  }
+  .card-footer {
+    @apply p-6 border-t border-beige-300 flex justify-between items-center bg-beige-200/50;
+  }
+  .card-dots {
+    @apply text-black/20 text-lg leading-none;
+  }
+  .btn-primary {
+    @apply bg-green-500 hover:bg-green-600 text-black px-6 py-2.5 rounded-xl flex items-center gap-2 font-bold transition-all shadow-md active:scale-95;
+  }
+}
+
+/* Made with Bob */
