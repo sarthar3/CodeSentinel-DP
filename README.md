@@ -132,8 +132,8 @@ Code Porter → CI/CD Healer → Model Suggester → Doc & Test Pipeline
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/codesentinel.git
-cd codesentinel
+git clone https://github.com/sarthar3/CodeSentinel-DP.git
+cd CodeSentinel-DP
 ```
 
 2. Copy environment variables:
